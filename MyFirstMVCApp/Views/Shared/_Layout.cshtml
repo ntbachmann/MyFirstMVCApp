@@ -1,0 +1,31 @@
+﻿
+<!--set default model for this to use, not always nessesary, and almost alwayt not for the _layout-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - MyFirstMVCApp</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+   
+    <!--render the partial here, second argument specifies a model to use, it will default use the defined model above-->
+    @Html.Partial("_NavBar")
+    <div class="container body-content">
+        
+        <!--renders the current view returned by the controller-->
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - MyFirstMVCApp</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

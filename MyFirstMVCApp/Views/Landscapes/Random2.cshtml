@@ -1,0 +1,40 @@
+﻿
+
+<!--RazorViews are just html, but you can add C# code as needed by using the at sign or the at**at for multiple lines-->
+
+
+<!--A ViewModel is a model specifically made for a view, in case you have multiple models needed in a single view, gives rules specific to the view-->
+<!--include the ViewModel needed for this view-->
+@model MyFirstMVCApp.ViewModels.RandomLandscapeViewModel
+
+@{
+    ViewBag.Title = "Random2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--render classes dynamically by having C# do the conditional, not limited to classes, can dynamically render any attributes-->
+@{ 
+    var className = Model.Admirerer.Count > 5 ? "popular" : null;
+}
+
+<!--since we are now using a ViewModel, we must drill down into the different models that comprise it to get properties within that sub-model-->
+<!--this class is conditional based upon the above C# code-->
+<h2 class="@className">@Model.Landscapes.Name</h2>
+
+
+@if (Model.Admirerer.Count == 0)
+{
+    <text>NOBODY likes your Landscape bro</text>
+}
+else
+{
+    <ul>
+        @foreach (var admirerer in Model.Admirerer)
+        {
+            <li>@admirerer.Name</li>
+        }
+    </ul>
+
+}
+
+

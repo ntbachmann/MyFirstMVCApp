@@ -1,0 +1,32 @@
+﻿@model MyFirstMVCApp.ViewModels.AdmirererViewModel
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Art Enthusiasts</h2>
+
+@if (Model.Admirerer.Count == 0)
+{
+    <text>NOBODY likes your Landscapes bro</text>
+}
+else
+{
+    <table>
+        <thead><strong>Admirerers</strong></thead>
+
+            @foreach (var admirerer in Model.Admirerer)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(admirerer.Name, "Details", "Admirerer", new { id = admirerer.Id }, null)
+                    </td>
+                </tr>
+            }
+    </table>
+   
+}
+
+

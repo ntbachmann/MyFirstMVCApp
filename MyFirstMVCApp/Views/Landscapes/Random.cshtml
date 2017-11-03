@@ -1,0 +1,43 @@
+﻿<!--EXAMPLE OF UTILISING A SINGLE MODEL IN THE VIEW-->
+
+<!--Include the model we want to use in this view-->
+@model MyFirstMVCApp.ViewModels.RandomLandscapeViewModel
+
+<!--always create the view so that it utilizes _Layout.cshtml-->
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--since the model is included at the top, we can use the properties defined in Landscapes.cs-->
+<!--this variety is used when the controller has -> returns View(landscape), which is the preffered method of handling -->
+<h2>Landscapes</h2>
+
+@if (Model.Landscapes.Count == 0)
+{
+    <text>There are no landscapes bro</text>
+}
+else
+{
+    <table>
+        <thead><strong>Viewable Landscapes</strong></thead>
+
+        @foreach (var landscape in Model.Landscapes)
+        {
+            <tr>
+                <td>
+                    @landscape.Name
+                </td>
+            </tr>
+        }
+    </table>
+
+}
+
+
+
+
+
+
+
+
